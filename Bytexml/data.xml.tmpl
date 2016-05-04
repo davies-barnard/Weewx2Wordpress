@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<weewx timestamp="889923"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="weewx.xsd">
+	
+	<version>$station.version</version>
+	<uptime>$station.uptime</uptime>
+	<weewxtime>$station.os_uptime</weewxtime>
+	
+	<extras>
+	#if $Extras.has_key('radar_url')
+		<radarurl>'$Extras.radar_url'</radarurl>
+	#end if
+	#if $Extras.has_key('radar_img')
+		<radarimg>'$Extras.radar_img'</radarimg>
+	#end if
+	</extras>
+	
+  <station>
+		<hardware>$station.hardware</hardware>
+		<location>$station.location</location>
+		<latitude degs="$station.latitude[0]">$station.latitude[1]' $station.latitude[2]</latitude>
+		<longitude degs="$station.longitude[0]">$station.longitude[1]' $station.longitude[2]</longitude>
+		<altitude>$station.altitude</altitude>
+	</station>
+	
+  <current>
+    <dateTime>$current.dateTime</dateTime>
+    <outTemp>$current.outTemp</outTemp>
+    <windchill>$current.windchill</windchill>
+    <heatindex>$current.heatindex</heatindex>
+    <dewpoint>$current.dewpoint</dewpoint>
+		<barometer trend="$trend.barometer">$current.barometer</barometer>
+		<wind winddir="$current.windDir" compass="$current.windDir.ordinal_compass">$current.windSpeed</wind>
+		<rainRate>$current.rainRate</rainRate> 
+		<inTemp>$current.inTemp</inTemp>
+		#if $day.extraTemp1.has_data
+			<extraTemp label="Pond Temperature">$current.extraTemp1</extraTemp>
+		#end if
+		#if $day.UV.has_data
+			<uv>$current.UV</uv>
+    #end if
+		#if $day.ET.has_data and $day.ET.sum.raw > 0.0
+			<et>$current.ET</et>
+    #end if
+    #if $day.radiation.has_data
+			<radiation>$current.radiation</radiation>
+    #end if
+	</current>
+	
+	<day>
+			<outTempmax time="$day.outTemp.maxtime">$day.outTemp.max</outTempmax>
+			<outTempmin time="$day.outTemp.mintime">$day.outTemp.min</outTempmin>
+
+			<heatindex time="$day.heatindex.maxtime">$day.heatindex.max</heatindex>
+
+			<windchill time="$day.windchill.mintime">$day.windchill.min</windchill>
+
+			<maxhumidity time="$day.outHumidity.maxtime">$day.outHumidity.max</maxhumidity>
+			<minhumidity time="$day.outHumidity.mintime">$day.outHumidity.min</minhumidity>
+
+			<maxdewpoint time="$day.dewpoint.maxtime">$day.dewpoint.max</maxdewpoint>
+			<mindewpoint time="$day.dewpoint.mintime">$day.dewpoint.min</mindewpoint>
+
+			<maxbarometer time="$day.barometer.maxtime">$day.barometer.max</maxbarometer>
+			<minbarometer time="$day.barometer.mintime">$day.barometer.min</minbarometer>
+
+			<rainsum>$day.rain.sum</rainsum>
+			<rainrate time="$day.rainRate.maxtime">$day.rainRate.max</rainrate>
+			
+			<windmax time="$day.wind.maxtime" direction="$day.wind.gustdir">$day.wind.max</windmax>
+			<windaverage>$day.wind.avg</windaverage>
+			<windrms>$day.wind.rms</windrms>
+			<windvector direction="$day.wind.vecdir">$day.wind.vecavg</windvector>
+
+			<inTempmax time="$day.inTemp.maxtime">$day.inTemp.max</inTempmax>
+			<inTempmin time="$day.inTemp.mintime">$day.inTemp.min</inTempmin>			
+
+	</day>
+	
+	<week>
+			<outTempmax time="$week.outTemp.maxtime">$week.outTemp.max</outTempmax>
+			<outTempmin time="$week.outTemp.mintime">$week.outTemp.min</outTempmin>
+
+			<heatindex time="$week.heatindex.maxtime">$week.heatindex.max</heatindex>
+
+			<windchill time="$week.windchill.mintime">$week.windchill.min</windchill>
+
+			<maxhumidity time="$week.outHumidity.maxtime">$week.outHumidity.max</maxhumidity>
+			<minhumidity time="$week.outHumidity.mintime">$week.outHumidity.min</minhumidity>
+
+			<maxdewpoint time="$week.dewpoint.maxtime">$week.dewpoint.max</maxdewpoint>
+			<mindewpoint time="$week.dewpoint.mintime">$week.dewpoint.min</mindewpoint>
+
+			<maxbarometer time="$week.barometer.maxtime">$week.barometer.max</maxbarometer>
+			<minbarometer time="$week.barometer.mintime">$week.barometer.min</minbarometer>
+
+			<rainsum>$week.rain.sum</rainsum>
+			<rainrate time="$week.rainRate.maxtime">$week.rainRate.max</rainrate>
+			
+			
+			<windmax time="$week.wind.maxtime" direction="$week.wind.gustdir">$week.wind.max</windmax>
+			<windaverage>$week.wind.avg</windaverage>
+			<windrms>$week.wind.rms</windrms>
+			<windvector direction="$week.wind.vecdir">$week.wind.vecavg</windvector>
+
+			<inTempmax time="$week.inTemp.maxtime">$week.inTemp.max</inTempmax>
+			<inTempmin time="$week.inTemp.mintime">$week.inTemp.min</inTempmin>			
+
+	</week>	
+	
+	<month>
+			<outTempmax time="$month.outTemp.maxtime">$month.outTemp.max</outTempmax>
+			<outTempmin time="$month.outTemp.mintime">$month.outTemp.min</outTempmin>
+
+			<heatindex time="$month.heatindex.maxtime">$month.heatindex.max</heatindex>
+
+			<windchill time="$month.windchill.mintime">$month.windchill.min</windchill>
+
+			<maxhumidity time="$month.outHumidity.maxtime">$month.outHumidity.max</maxhumidity>
+			<minhumidity time="$month.outHumidity.mintime">$month.outHumidity.min</minhumidity>
+
+			<maxdewpoint time="$month.dewpoint.maxtime">$month.dewpoint.max</maxdewpoint>
+			<mindewpoint time="$month.dewpoint.mintime">$month.dewpoint.min</mindewpoint>
+
+			<maxbarometer time="$month.barometer.maxtime">$month.barometer.max</maxbarometer>
+			<minbarometer time="$month.barometer.mintime">$month.barometer.min</minbarometer>
+
+			<rainsum>$month.rain.sum</rainsum>
+			<rainrate time="$month.rainRate.maxtime">$month.rainRate.max</rainrate>
+			
+			
+			<windmax time="$month.wind.maxtime" direction="$month.wind.gustdir">$month.wind.max</windmax>
+			<windaverage>$month.wind.avg</windaverage>
+			<windrms>$month.wind.rms</windrms>
+			<windvector direction="$month.wind.vecdir">$month.wind.vecavg</windvector>
+
+			<inTempmax time="$month.inTemp.maxtime">$month.inTemp.max</inTempmax>
+			<inTempmin time="$month.inTemp.mintime">$month.inTemp.min</inTempmin>			
+
+	</month>
+	
+	<year>
+			<outTempmax time="$year.outTemp.maxtime">$year.outTemp.max</outTempmax>
+			<outTempmin time="$year.outTemp.mintime">$year.outTemp.min</outTempmin>
+
+			<heatindex time="$year.heatindex.maxtime">$year.heatindex.max</heatindex>
+
+			<windchill time="$year.windchill.mintime">$year.windchill.min</windchill>
+
+			<maxhumidity time="$year.outHumidity.maxtime">$year.outHumidity.max</maxhumidity>
+			<minhumidity time="$year.outHumidity.mintime">$year.outHumidity.min</minhumidity>
+
+			<maxdewpoint time="$year.dewpoint.maxtime">$year.dewpoint.max</maxdewpoint>
+			<mindewpoint time="$year.dewpoint.mintime">$year.dewpoint.min</mindewpoint>
+
+			<maxbarometer time="$year.barometer.maxtime">$year.barometer.max</maxbarometer>
+			<minbarometer time="$year.barometer.mintime">$year.barometer.min</minbarometer>
+
+			<rainsum>$year.rain.sum</rainsum>
+			<rainrate time="$year.rainRate.maxtime">$year.rainRate.max</rainrate>
+			
+			
+			<windmax time="$year.wind.maxtime" direction="$year.wind.gustdir">$year.wind.max</windmax>
+			<windaverage>$year.wind.avg</windaverage>
+			<windrms>$year.wind.rms</windrms>
+			<windvector direction="$year.wind.vecdir">$year.wind.vecavg</windvector>
+
+			<inTempmax time="$year.inTemp.maxtime">$year.inTemp.max</inTempmax>
+			<inTempmin time="$year.inTemp.mintime">$year.inTemp.min</inTempmin>			
+
+	</year>	
+	
+    #if $almanac.hasExtras
+    ## Extended almanac information is available. Do the full set of tables.
+    <almanac>
+			<sun>
+				<twilightRise>$almanac(horizon=-6).sun(use_center=1).rise</twilightRise>
+				<twilightSet>$almanac(horizon=-6).sun(use_center=1).set</twilightSet>
+				<sunrise>$almanac.sun.rise</sunrise>
+				<transit>$almanac.sun.transit</transit>
+				<sunset>$almanac.sun.set</sunset>
+				<azimuth>$almanac.sun.az</azimuth>
+				<altitude>$almanac.sun.ra</altitude>
+				<declination>$almanac.sun.dec</declination>
+				<rightascension>$almanac.sun.ra</rightascension>
+				<equinox>$almanac.next_equinox</equinox>
+				<solstice>$almanac.next_solstice</solstice>
+			</sun>
+			<moon>
+				<twilightRise>$almanac(horizon=-6).moon(use_center=1).rise</twilightRise>
+				<twilightSet>$almanac(horizon=-6).moon(use_center=1).set</twilightSet>
+				<moonrise>$almanac.moon.rise</moonrise>
+				<transit>$almanac.moon.transit</transit>
+				<moonset>$almanac.moon.set</moonset>
+				<azimuth>$almanac.moon.az</azimuth>
+				<altitude>$almanac.moon.ra</altitude>
+				<declination>$almanac.moon.dec</declination>
+				<rightascension>$almanac.moon.ra</rightascension>
+				<fullmoon>$almanac.next_full_moon</fullmoon>
+				<newmoon>$almanac.next_new_moon</newmoon>
+				<phase fullness="$almanac.moon_fullness">$almanac.moon_phase</phase>
+			</moon>
+    </almanac> 
+   #else
+		<almanac>
+			<sun>
+				<sunrise>$almanac.sunrise</sunrise>
+				<sunset>$almanac.sunrise</sunset>
+			</sun>
+			<moon>
+				<phase fullness="$almanac.moon_fullness">$almanac.moon_phase</phase>
+			</moon>
+		<almanac>
+    #end if
+
+</weewx>
+ 
